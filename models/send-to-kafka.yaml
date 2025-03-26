@@ -1,0 +1,30 @@
+openapi: 3.0.3
+info:
+  title: Модели запросов и ответов эндпоинта send-to-kafka
+  version: 1.0.0
+paths:
+  /:
+components:
+  schemas:
+    SendToKafkaErrorResponse:
+      description: Ответ при ошибке
+      type: object
+      properties:
+        errorMessage:
+          $ref: 'components.yaml#/components/schemas/errorMessage'
+  requestBodies:
+    SendToKafkaRequest:
+      description: Тело запроса при отправке сообщения в Kafka
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+              - id
+              - body
+            type: object
+            properties:
+              id:
+                $ref: 'components.yaml#/components/schemas/id'
+              body:
+                $ref: 'components.yaml#/components/schemas/body'
