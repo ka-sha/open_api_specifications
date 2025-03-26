@@ -1,0 +1,20 @@
+openapi: 3.0.3
+info:
+  title: Поля моделей API сервиса отправки запроса/ответа RestTemplate.
+  version: 1.0.0
+paths:
+  /:
+components:
+  schemas:
+    id:
+      description: Идендификатор запроса.
+      type: string
+      example: "5555"
+    body:
+      description: Тело запроса.
+      type: string
+      example: "text"
+    errorMessage:
+      description: Описание ошибки при обращении к сервису.
+      type: string
+      example: "Сервис временно недоступен"
