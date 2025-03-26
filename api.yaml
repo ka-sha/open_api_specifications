@@ -1,0 +1,34 @@
+openapi: 3.0.3
+info:
+  title: API сервиса отправки запроса/ответа RestTemplate.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: SpringBootOpenApiGeneration
+    description: генерация API
+paths:
+  /api/send-to-kafka:
+    post:
+      tags:
+        - SpringBootOpenApiGeneration
+      summary: Отправляет сообщение в Kafka. Пишет метрику об успешной/неуспешной отправке сообщения в Kafka.
+      operationId: sendToKafka
+      requestBody:
+        $ref: 'models/send-to-kafka.yaml#/compontnts/requestBodies/SendToKafkaRequest'
+      responses:
+        '200':
+          description: Сообщение успешно отправлено.
+        '400':
+          description: Сообщение не отправлено.
+          content:
+            application/json:
+              schema:
+                $ref: 'models/send-to-kafka.yaml#/compontnts/schemas/SendToKafkaErrorResponse'
+        '500':
+          description: Внутренняя ошибка.
+          content:
+            application/json:
+              schema:
+                $ref: 'models/send-to-kafka.yaml#/compontnts/schemas/SendToKafkaErrorResponse'
+
